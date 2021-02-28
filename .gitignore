@@ -3,3 +3,4 @@ ImageDataSet/Covid-19/*
 ImageDataSet/No_findings/*
 ImageDataSet/Pneumonia/*
 __pycache__
+.vscode

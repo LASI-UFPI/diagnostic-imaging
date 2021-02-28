@@ -1,3 +1,5 @@
 from src.classification.train import TrainClass
 
-print(TrainClass.normalize())
+train = TrainClass()
+
+print(train.train())
