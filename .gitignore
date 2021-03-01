@@ -4,3 +4,6 @@ ImageDataSet/No_findings/*
 ImageDataSet/Pneumonia/*
 __pycache__
 .vscode
+tranferlearning_weights.hdf5
+# o arquivo cnndiagnostic deve ser retirado quando o modelo da CNN estiver com um erro aceitável
+cnndiagnostic
