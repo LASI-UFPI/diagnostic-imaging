@@ -1,5 +1,6 @@
 from .datasetImage import select_data_set
 from pathlib import Path
+from PIL import Image
 
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer
@@ -119,4 +120,26 @@ class TrainClass():
     # gráfico da matriz de confusão
     fig, ax = plot_confusion_matrix(conf_mat=cm ,  figsize=(5, 5))
     plt.show()
+  
+  # Função para retornar o resultado a partir de um modelo de CNN
+  def predictDiagnostic(self, filenameImage, filenameModel):
+    image = Image.open(filenameImage) # busca da imagem
+    image = image.convert('RGB') # converção para RBG
+    image = image.resize((150,150)) # organização para o shape de entrada
+    image = np.array(image, ndmin=4)/255 # normalização da imagem
+
+    model = models.load_model(filenameModel) # busca o modelo da CNN
+
+    result_predict = int(model.predict_classes(image)) # faz a previsão e converte para inteiro
     
+    # Bloco para verificação do resultado
+    if result_predict == 0:
+      result = 'COVID-19'
+    elif result_predict == 1:
+      result = 'NENHUMA DETECÇÃO'
+    elif result_predict == 2:
+      result = 'PNEUMONIA'
+    else:
+      result = 'Erro de processamento'
+    
+    return result
