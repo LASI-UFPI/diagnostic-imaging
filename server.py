@@ -4,7 +4,7 @@ from pathlib import Path
 train = TrainClass()
 BASE_DIR = Path(__file__).resolve().parent
 
-train.train() # comando para executar o treinamento, comentar caso não seja a necessidade 
+#train.train() # comando para executar o treinamento, comentar caso não seja a necessidade 
 
 train.test() # comando para executar o test, comentar caso não seja a nesseidade 
 
