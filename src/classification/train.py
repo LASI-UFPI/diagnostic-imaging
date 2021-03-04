@@ -123,6 +123,8 @@ class TrainClass():
   
   # Função para retornar o resultado a partir de um modelo de CNN
   def predictDiagnostic(self, filenameImage, filenameModel):
+    filenameImage = BASE_DIR/filenameImage
+    filenameModel = BASE_DIR/filenameModel
     image = Image.open(filenameImage) # busca da imagem
     image = image.convert('RGB') # converção para RBG
     image = image.resize((150,150)) # organização para o shape de entrada

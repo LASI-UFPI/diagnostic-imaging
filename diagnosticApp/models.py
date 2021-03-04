@@ -1,6 +1,11 @@
 import uuid
+import os
 from django.db import models
 from stdimage.models import StdImageField
+from django.db.models import signals
+
+import src
+from src.classification.train import TrainClass
 
 def get_file_path(instace, filename):
   ext = filename.split('.')[-1]
@@ -23,7 +28,7 @@ class Image(Base):
     ('pneumonia','PNEUMONIA'),
   )
   image = StdImageField('Imagem', upload_to=get_file_path, variations={'thumb':{'width': 360, 'height': 360, 'crop': True}}, delete_orphans=True)
-  diagnostic = models.CharField('Diagnóstico',null=True, blank=True, max_length=15, choices=DIAGNOSTIC_CHOICES)
+  diagnostic = models.CharField('Diagnóstico',null=True, blank=True, max_length=15)
 
   class Meta:
     verbose_name = 'Imagem'
@@ -31,3 +36,16 @@ class Image(Base):
   
   def __str__(self):
     return f'{self.diagnostic}: {self.image}'
+
+def image_post_save(signal, instance, sender, **kwargs):
+  signals.post_save.disconnect(image_post_save, sender=Image)
+  train = TrainClass()
+  filenameImage = os.path.join('media',instance.image.name)
+  filenameModel = 'cnndiagnostic'
+  instance.diagnostic = train.predictDiagnostic(filenameImage,filenameModel)
+  instance.save()
+  signals.post_save.connect(image_post_save, sender=Image)
+  
+
+signals.post_save.connect(image_post_save, sender=Image)
+
