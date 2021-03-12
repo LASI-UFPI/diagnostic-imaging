@@ -7,15 +7,72 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 55vh;
+}
+.thumb img {
+  object-fit: contain;
+  height: 450px;
 }
 
-.form {
-  background-color: white;
+form {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1% 30% 1% 30%;
+  height: 15vh;
+}
 
-  border: 1px solid white;
+div.formdiv {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: white;  
+  margin: initial;
+
+  border: 25px solid white;
   border-radius: 25px;
+}
+
+label {
+  display: none;
+  position: absolute;
+}
+br {
+  display: none;
+  position: absolute;
+}
+
+input {
+  color: black;
+}
+
+div.buttons {
+  background-color: white;
+  margin: 0 0 0 20px;
+
+  border: 15px solid white;
+  border-radius: 25px;
+}
+
+button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding: inherit;
+}
+
+.messages {
+  position: absolute;
+  z-index: 4;
+}
+
+footer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin: 100px 0 0 0;
+  height: 15vh;
+  background-color: white;
 }
