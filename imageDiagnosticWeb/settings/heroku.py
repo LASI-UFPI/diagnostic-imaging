@@ -1,6 +1,6 @@
 import environ
 
-from tutorialdjango.settings.base import *
+from imageDiagnosticWeb.settings.base import *
 
 env = environ.Env()
 
