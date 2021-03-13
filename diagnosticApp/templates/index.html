@@ -6,32 +6,35 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/global.css' %}">
-  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="shortcut icon" href="{% static 'images/logo-lasi.ico' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
   <title>Lasi</title>
 </head>
 <body>
   <div class="container">
     <div class="thumb">
       <img src="{% static 'images/CapaLasi.jpeg' %}" alt="Capa LASI">
-    </div>
-    {% bootstrap_messages %}
-    <div class="form">
-      <form action="{%url 'index' %}" method="POST" class="form" enctype="multipart/form-data">
-        {% csrf_token %}
-  
+    </div> 
+    <form action="{%url 'index' %}" method="POST" class="form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="formdiv">
         {% bootstrap_form form %}
+      </div>
+      <div class="buttons">
         {% buttons %}
-          <button type="submit" class="btn btn-primary">Enviar Imagem</button>
+        <button type="submit" class="btn btn-primary">Enviar Imagem</button>
         {% endbuttons %}
-      </form>
+      </div>
+    </form>
+    <div class="messages">
+      {% bootstrap_messages %}
     </div>
     <footer>
-      <img src="{% static 'images/instagram.svg' %}" alt=""> 
-      <i>Teste</i>
-      <p>Instagram</p>
+      <a href="https://www.instagram.com/lasi.ufpi" target="_blank">
+        <img src="{% static 'images/instagram.svg' %}" alt="" width="60px" height="60px">
+      </a> 
     </footer>
-
   </div>
 {% bootstrap_javascript jquery='full' %}
 </body>
