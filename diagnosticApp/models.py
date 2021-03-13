@@ -41,8 +41,9 @@ def image_post_save(signal, instance, sender, **kwargs):
   signals.post_save.disconnect(image_post_save, sender=Image)
   train = TrainClass()
   filenameImage = os.path.join('media',instance.image.name)
-  filenameModel = 'cnndiagnostic'
-  instance.diagnostic = train.predictDiagnostic(filenameImage,filenameModel)
+  filenameModel = 'cnndiagnostic/model.json'
+  filenameWeights = 'cnndiagnostic/model.h5'
+  instance.diagnostic = train.predictDiagnostic(filenameImage,filenameModel, filenameWeights)
   instance.save()
   signals.post_save.connect(image_post_save, sender=Image)
   

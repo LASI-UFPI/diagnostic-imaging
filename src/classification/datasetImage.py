@@ -9,7 +9,7 @@ from os.path import join # Junta o caminha em um só
 def select_image(filename):
   image = Image.open(filename)
   image = image.convert('RGB')
-  image = image.resize((150,150))
+  image = image.resize((360,360))
   return np.asarray(image)
 # Esta função tem os seguintes argumentos:
 # diretorio: onde está localizada as imagens de uma determinada classe

@@ -20,7 +20,7 @@ path_dataset = BASE_DIR/'ImageDataSet'
 class TrainClass():
   def __init__(self):
     self.batch_size   = 32
-    self.input_shape  = (150, 150, 3) # esse valor tem que condizer com image.resize do arquivo datasetImage.py
+    self.input_shape  = (360, 360, 3) # esse valor tem que condizer com image.resize do arquivo datasetImage.py
     self.random_states = 42 
     self.alpha        = 1e-5
     self.epoch        = 10 # não colocar muitas épocas max 100
@@ -122,15 +122,21 @@ class TrainClass():
     plt.show()
   
   # Função para retornar o resultado a partir de um modelo de CNN
-  def predictDiagnostic(self, filenameImage, filenameModel):
+  def predictDiagnostic(self, filenameImage, filenameModel, filenameWeights):
     filenameImage = BASE_DIR/filenameImage
     filenameModel = BASE_DIR/filenameModel
+    filenameWeights = BASE_DIR/filenameWeights
     image = Image.open(filenameImage) # busca da imagem
     image = image.convert('RGB') # converção para RBG
-    image = image.resize((150,150)) # organização para o shape de entrada
+    image = image.resize((360,360)) # organização para o shape de entrada
     image = np.array(image, ndmin=4)/255 # normalização da imagem
 
-    model = models.load_model(filenameModel) # busca o modelo da CNN
+    json_file = open(filenameModel, 'r')
+    loaded_model_json = json_file.read()
+    json_file.close()
+    model = models.model_from_json(loaded_model_json)
+    # load weights into new model
+    model.load_weights(filenameWeights)
 
     result_predict = int(model.predict_classes(image)) # faz a previsão e converte para inteiro
     
