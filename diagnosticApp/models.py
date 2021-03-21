@@ -37,13 +37,15 @@ class Image(Base):
 
 def image_post_save(signal, instance, sender, **kwargs):
   signals.post_save.disconnect(image_post_save, sender=Image)
+
   filenameImage = settings.BASE_DIR/'media'/instance.image.name
   filenameModel = settings.BASE_DIR/'cnndiagnostic'/'model.json'
   filenameWeights = settings.BASE_DIR/'cnndiagnostic'/'model.h5'
+
   instance.predict_covid, instance.predict_no_findings, instance.predict_pneumonia = predictDiagnostic(filenameImage, filenameModel, filenameWeights)
+
   instance.save()
-  signals.post_save.connect(image_post_save, sender=Image)
-  
+  signals.post_save.connect(image_post_save, sender=Image)  
 
 signals.post_save.connect(image_post_save, sender=Image)
 
