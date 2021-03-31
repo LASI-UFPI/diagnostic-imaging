@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.shortcuts import redirect
 from django.contrib import messages
 
 from .forms import ImageModelForm
@@ -10,27 +9,19 @@ def index(request):
     form = ImageModelForm(request.POST, request.FILES)
     if form.is_valid():
       form.save()
-      context = {
-        'form_valid': form.is_valid()
-      }
-      response = result(request, context)
+      response = result(request)
       return response
     else:
-      error = 'Erro ao enviar'
-      context = {
-        'form': form,
-        'form_valid': form.is_valid(),
-      }
-      return render(request, 'index.html', context)
+      message = 'Erro ao enviar a imagem, por favor tente novamente!'
+      messages.error(request, message)
   else:
     form = ImageModelForm()
-    context = {
-      'form': form,
-      'form_valid': form.is_valid(),
-    }
-    return render(request, 'index.html', context)
+  context = {
+    'form': form,
+  }
+  return render(request, 'index.html', context)
 
-def result(request, newContext={}):
+def result(request):
   image = Image.objects.all().last().image
   predict_covid = Image.objects.all().last().predict_covid*100
   predict_no_findings = Image.objects.all().last().predict_no_findings*100
@@ -42,5 +33,4 @@ def result(request, newContext={}):
     'predict_no_findings': predict_no_findings,
     'predict_pneumonia': predict_pneumonia,
   }
-  context.update(newContext)
   return render(request, 'result.html',context)

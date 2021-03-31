@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="{% static 'images/logo-lasi.ico' %}" type="image/x-icon">
   <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
   <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
-  <title>Lasi</title>
+  <title>LASI - Liga Acadêmica de Sistemas Inteligentes</title>
 </head>
 <body>
   <div class="container">
@@ -27,16 +27,8 @@
         {% endbuttons %}
       </div>
     </form>
-    <div class="results">
-      {% if form_valid == True %}
-        <p>Imagem Enviada com Sucesso! Os resultados da CNN são:</p>
-        <p>Covid: {{ predict_covid|stringformat:".2f" }}%</p>
-        <p>Sem detecção: {{ predict_no_findings|stringformat:".2f" }}%</p>
-        <p>Pneumonia: {{ predict_pneumonia|stringformat:".2f" }}%</p>
-        <img src="{{ image.url }}" alt="Resultado" width="200px" height="200px">
-      {% else %}
-        <p>Olá, insira um imagem do raio-x do toráx no campo indicado!</p>
-      {% endif %}
+    <div class="messages">
+      {% bootstrap_messages %}
     </div>
     <footer>
       <a href="https://www.instagram.com/lasi.ufpi" target="_blank">
