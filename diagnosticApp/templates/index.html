@@ -27,7 +27,7 @@
         {% endbuttons %}
       </div>
     </form>
-    <div>
+    <div class="results">
       {% if form_valid == True %}
         <p>Imagem Enviada com Sucesso! Os resultados da CNN são:</p>
         <p>Covid: {{ predict_covid|stringformat:".2f" }}%</p>
