@@ -27,8 +27,16 @@
         {% endbuttons %}
       </div>
     </form>
-    <div class="messages">
-      {% bootstrap_messages %}
+    <div>
+      {% if form_valid == True %}
+        <p>Imagem Enviada com Sucesso! Os resultados da CNN são:</p>
+        <p>Covid: {{ predict_covid|stringformat:".2f" }}%</p>
+        <p>Sem detecção: {{ predict_no_findings|stringformat:".2f" }}%</p>
+        <p>Pneumonia: {{ predict_pneumonia|stringformat:".2f" }}%</p>
+        <img src="{{ image.url }}" alt="Resultado" width="200px" height="200px">
+      {% else %}
+        <p>Olá, insira um imagem do raio-x do toráx no campo indicado!</p>
+      {% endif %}
     </div>
     <footer>
       <a href="https://www.instagram.com/lasi.ufpi" target="_blank">

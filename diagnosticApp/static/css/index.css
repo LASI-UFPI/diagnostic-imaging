@@ -7,7 +7,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 55vh;
+  height: 45vh;
 }
 .thumb img {
   object-fit: contain;
@@ -52,7 +52,9 @@ div.buttons {
   margin: 0 0 0 20px;
 
   border: 15px solid white;
-  border-radius: 25px;
+  border-radius: 50px 0px 50px 50px;
+  width: 90px;
+  height: 75px;
 }
 
 button {
@@ -68,11 +70,13 @@ button {
 }
 
 footer {
+  position: fixed;
   display: flex;
-  flex: 1;
+
+  bottom: 0;
+  width: 100%;
+  height: 90px;
   align-items: center;
   justify-content: center;
-  margin: 100px 0 0 0;
-  height: 15vh;
   background-color: white;
 }
