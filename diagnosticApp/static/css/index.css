@@ -1,0 +1,113 @@
+body {
+  background-color: #000040;
+  color: aliceblue;
+}
+
+.thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45vh;
+}
+.thumb img {
+  object-fit: contain;
+  height: 450px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15vh;
+}
+
+div.formdiv {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: white;  
+  margin: initial;
+
+  border: 25px solid white;
+  border-radius: 25px;
+}
+
+label {
+  display: none;
+  position: absolute;
+}
+br {
+  display: none;
+  position: absolute;
+}
+
+input {
+  color: black;
+}
+
+div.buttons {
+  background-color: white;
+  margin: 0 0 0 20px;
+
+  border: 15px solid white;
+  border-radius: 50px 0px 50px 50px;
+  width: 90px;
+  height: 75px;
+}
+
+button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding: inherit;
+}
+
+.messages {
+  position: absolute;
+  z-index: 4;
+}
+
+section.information {
+  display: flex;
+
+  margin-top: 3%;
+  margin-bottom: 7%;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.who {
+  text-align: justify;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+.who h1 {
+  text-align: center;
+  color:#FDC300;
+  margin-bottom: 1%;
+}
+.about {
+  text-align: justify;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+.about h1 {
+  text-align: center;
+  color:#FDC300;
+  margin-bottom: 1%;
+}
+
+footer {
+  position: fixed;
+  display: flex;
+
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+}
