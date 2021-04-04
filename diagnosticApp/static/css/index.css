@@ -69,14 +69,45 @@ button {
   z-index: 4;
 }
 
+section.information {
+  display: flex;
+
+  margin-top: 3%;
+  margin-bottom: 7%;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.who {
+  text-align: justify;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+.who h1 {
+  text-align: center;
+  color:#FDC300;
+  margin-bottom: 1%;
+}
+.about {
+  text-align: justify;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+.about h1 {
+  text-align: center;
+  color:#FDC300;
+  margin-bottom: 1%;
+}
+
 footer {
   position: fixed;
   display: flex;
 
   bottom: 0;
   width: 100%;
-  height: 90px;
+  height: 70px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-color: white;
 }
