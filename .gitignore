@@ -7,3 +7,5 @@ __pycache__
 tranferlearning_weights.hdf5
 media/
 db.sqlite3
+htmlcov
+.coverage

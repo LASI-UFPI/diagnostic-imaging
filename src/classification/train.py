@@ -16,10 +16,9 @@ def predictDiagnostic(filenameImage, filenameModel, filenameWeights):
   model.load_weights(filenameWeights)
 
   result_predict = model.predict(image) # faz a previsão e converte para inteiro
-  print(result_predict)
 
   result_covid = float(result_predict[0][0])
-  result_no_findings =  float(result_predict[0][1])
+  result_no_findings = float(result_predict[0][1])
   result_pneumonia = float(result_predict[0][2])
 
   return result_covid, result_no_findings, result_pneumonia
