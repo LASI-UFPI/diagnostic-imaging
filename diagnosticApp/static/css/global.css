@@ -4,3 +4,14 @@
   box-sizing: border-box;
   outline: 0;
 }
+
+.m-flex {
+  display: flex !important;
+  flex-direction: column;
+  width: 108px;
+}
+
+.orange{
+  color: #ff4418;
+
+}
