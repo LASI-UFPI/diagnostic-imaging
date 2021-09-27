@@ -121,6 +121,6 @@ USE_TZ = True
 import os
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = BASE_DIR / 'diagnosticApp/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # LOGOUT_REDIRECT_URL = 'index'
